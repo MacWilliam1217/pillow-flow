@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智能枕芯定制流程</title>
+<style>
+/* ---------------- 设计变量 ---------------- */
+:root{
+  --primary-bg: linear-gradient(135deg,#0f2027 0%,#203a43 50%,#2c5364 100%);
+  --card-bg: rgba(255,255,255,.08);
+  --card-hover: rgba(255,255,255,.15);
+  --text-primary: #fff;
+  --text-secondary: #cbd5e0;
+  --accent-border: #45b7d1; /* 统一边框色 */
+  --radius: 20px;
+  --shadow: 0 10px 35px rgba(0,0,0,.25);
+  --transition: .45s cubic-bezier(.25,.8,.25,1);
+}
+
+/* ---------------- 全局 ---------------- */
+*{box-sizing:border-box;margin:0;padding:0;font-family:'PingFang SC','Microsoft YaHei',sans-serif;}
+body{display:flex;justify-content:center;background:var(--primary-bg) fixed;color:var(--text-secondary);line-height:1.6;}
+.container{width:100%;max-width:900px;margin:40px 20px;}
+
+/* ---------------- 标题 ---------------- */
+.main-title{
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 50px;
+  color: var(--text-primary);
+  text-shadow: 0 2px 10px rgba(0,0,0,.3);
+  letter-spacing: 1px;
+}
+
+/* ---------------- 步骤卡片 ---------------- */
+.step{
+  display: flex;
+  align-items: flex-start;
+  padding: 30px;
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--accent-border); /* 统一边框 */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.step.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step:hover{
+  transform: translateY(-8px) scale(1.01);
+  background: var(--card-hover);
+}
+
+.step-icon{
+  font-size: 52px;
+  margin-right: 25px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.2));
+  min-width: 60px;
+  text-align: center;
+}
+
+.step-title{
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.step-desc{
+  margin-bottom: 15px;
+}
+
+.step-details{
+  background: rgba(0,0,0,.2);
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+/* ---------------- 步骤4 子模块 ---------------- */
+.sub-modules{
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.sub-module{
+  flex: 1 1 200px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  padding: 15px;
+  transition: background var(--transition);
+}
+
+.sub-module:hover{
+  background: rgba(255,255,255,.1);
+}
+
+.sub-module-title{
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.sub-module-desc{
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* ---------------- 呼吸式箭头 ---------------- */
+.arrow{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.arrow.visible{
+  opacity: 1;
+}
+.arrow::after{
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg,var(--accent-border),var(--accent-border));
+  border-radius: 50%;
+  animation: breathe 2s infinite;
+}
+@keyframes breathe{
+  0%,100%{transform: scale(.8); opacity: .4;}
+  50%{transform: scale(1.2); opacity: 1;}
+}
+
+/* ---------------- 响应式 ---------------- */
+@media(max-width:700px){
+  .step{flex-direction: column; text-align: center;}
+  .step-icon{margin: 0 0 15px;}
+  .sub-modules{flex-direction: column;}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="main-title">智能枕芯定制流程</h1>
+
+  <!-- 步骤1 -->
+  <div class="step">
+    <div class="step-icon">🛏️</div>
+    <div>
+      <div class="step-title">步骤 1：数据采集</div>
+      <div class="step-desc">通过 C-Scan 系统采集头颈部压力分布、颈椎曲度等数据</div>
+      <div class="step-details">
+        <ul><li>头颈部压力分布数据</li><li>颈椎曲度数据</li></ul>
+        <p>数据通过压力传感器阵列和位移传感器实时采集，并上传至 AI 进行分析。</p>
+      </div>
+    </div>
+  </div>
+  <div class="arrow"></div>
+
+  <!-- 步骤2 -->
+  <div class="step">
+    <div class="step-icon">💻</div>
+    <div>
+      <div class="step-title">步骤 2：数据分析</div>
+      <div class="step-desc">AI 算法分析压力数据，计算压力均匀性，识别关键点（枕骨、C1-C7）的压力值</div>
+      <div class="step-details">
+        <ul><li>压力均匀性评分：8.5/10</li><li>颈椎曲度匹配度：92%</li><li>关键压力点识别：枕骨区域、C1-C7 区域</li></ul>
+        <p>基于 AI 分析结果，系统生成个性化的枕头设计方案。</p>
+      </div>
+    </div>
+  </div>
+  <div class="arrow"></div>
+
+  <!-- 步骤3 -->
+  <div class="step">
+    <div class="step-icon">🎯</div>
+    <div>
+      <div class="step-title">步骤 3：建模与处方生成</div>
+      <div class="step-desc">根据分析结果，构建数字虚拟枕，确定最佳枕头高度，生成个性化枕芯 3D 可视数字处方</div>
+      <div class="step-details">
+        <ul><li>A 款：61 cm × 38 cm × 7 cm</li><li>B 款：61 cm × 38 cm × 8.5 cm</li><li>C 款：61 cm × 38 cm × 10 cm</li><li>材质密度分布：梯度变化</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="arrow"></div>
+
+  <!-- 步骤4 -->
+  <div class="step">
+    <div class="step-icon">🔧</div>
+    <div style="width:100%">
+      <div class="step-title">步骤 4：柔性定制</div>
+      <div class="step-desc">三种定制方式可单独或组合使用</div>
+      <div class="step-details">
+        <div class="sub-modules">
+          <div class="sub-module">
+            <div class="sub-module-title">a) 力学数字适配</div>
+            <div class="sub-module-desc">从枕芯数据库中智能匹配最接近的型号（匹配度 95%，推荐 A/B/C 款）</div>
+          </div>
+          <div class="sub-module">
+            <div class="sub-module-title">b) 模块组合</div>
+            <div class="sub-module-desc">基础模块 + 颈部支撑模块 + 头部适配模块，实现梯度支撑</div>
+          </div>
+          <div class="sub-module">
+            <div class="sub-module-title">c) 3D 打印</div>
+            <div class="sub-module-desc">医用级聚氨酯泡沫，0.1 mm 精度，内部蜂窝结构优化，打印时间约 4 小时</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ---------------- 滚动显隐 ---------------- */
+const steps=document.querySelectorAll('.step');
+const arrows=document.querySelectorAll('.arrow');
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const idx=[...steps].indexOf(e.target);
+      e.target.classList.add('visible');
+      if(idx<arrows.length) arrows[idx].classList.add('visible');
+    }
+  });
+},{threshold:.25});
+steps.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
